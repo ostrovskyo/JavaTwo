@@ -16,7 +16,6 @@ public class CreateProductAction implements Action {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-
         System.out.println("1.FRESH_PRODUCE");
         System.out.println("2.MEAT");
         System.out.println("3.DAIRY");
