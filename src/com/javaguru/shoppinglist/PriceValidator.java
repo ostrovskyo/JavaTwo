@@ -6,6 +6,8 @@ public class PriceValidator implements Validator {
 
     @Override
     public boolean validate(String str) {
-        return new BigDecimal(str).compareTo(BigDecimal.ZERO) > 0;
+        if (new BigDecimal(str).compareTo(BigDecimal.ZERO) < 0){
+            throw new IllegalArgumentException("Illegal price!");
+        } else return true;
     }
 }
