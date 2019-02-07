@@ -1,4 +1,10 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.service;
+
+import com.javaguru.shoppinglist.domain.Category;
+import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.service.validation.DiscountValidator;
+import com.javaguru.shoppinglist.service.validation.NameValidator;
+import com.javaguru.shoppinglist.service.validation.PriceValidator;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

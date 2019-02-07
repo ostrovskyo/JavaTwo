@@ -1,8 +1,8 @@
-package com.javaguru.shoppinglist;
+package com.javaguru.shoppinglist.service.validation;
 
 public abstract class AbstractValidator implements Validator {
 
-    boolean assertNotNull(String str) {
+    public boolean assertNotNull(String str) {
         return str != null && !str.isEmpty();
     }
 }

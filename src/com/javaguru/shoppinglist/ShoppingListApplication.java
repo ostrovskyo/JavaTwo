@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist;
 
+import com.javaguru.shoppinglist.console.ConsoleUI;
+import com.javaguru.shoppinglist.service.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
