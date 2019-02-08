@@ -1,36 +1,24 @@
 package com.javaguru.shoppinglist.console;
 
-import com.javaguru.shoppinglist.service.Action;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private final List<Action> actions;
-
-    public ConsoleUI(List<Action> actions) {
-            this.actions = actions;
-    }
+    private UserMenu menu = new UserMenu();
 
     public void start() {
+        menu.createUserMenu();
         Scanner scanner = new Scanner(System.in);
         int response = 0;
 
         while (response >= 0) {
-            printMenu();
+            menu.printMenu();
             try {
                 response = scanner.nextInt();
-                actions.get(response).execute();
+                menu.getAction(response).execute();
             } catch (Exception e) {
                 System.out.println("Error! Please try again.");
             }
-        }
-    }
-
-    private void printMenu() {
-        for (int i = 0; i < actions.size(); i++) {
-            System.out.println(i + ". " + actions.get(i));
         }
     }
 }

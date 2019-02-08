@@ -36,21 +36,28 @@ public class Product {
         this.price = price;
     }
 
-    public Category getCategory(){ return category; }
+    public Category getCategory() {
+        return category;
+    }
 
-    public void setCategory(Category productCategory){
+    public void setCategory(Category productCategory) {
         this.category = productCategory;
     }
 
-    public int getDiscount(){ return discount; }
 
-    public void setDiscount(int productDiscount){
+    public int getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int productDiscount) {
         this.discount = productDiscount;
     }
 
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String productDescription){
+    public void setDescription(String productDescription) {
         this.description = productDescription;
     }
 

@@ -13,36 +13,26 @@ public class CreateProductAction implements Action {
 
     private static final String ACTION_NAME = "Create Product";
 
-    private final ProductService productService;
+    private final ServiceProduct productService;
 
-    public CreateProductAction(ProductService productService) {
+    public CreateProductAction(ServiceProduct productService) {
         this.productService = productService;
     }
 
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1.FRESH_PRODUCE");
-        System.out.println("2.MEAT");
-        System.out.println("3.DAIRY");
-        System.out.println("4.BREAD");
-        System.out.println("5.HOUSEHOLD");
-        System.out.println("6.HEALTH_AND_BEAUTY");
-        String ch = scanner.nextLine();
+        System.out.println("1. FRESH_PRODUCE");
+        System.out.println("2. MEAT");
+        System.out.println("3. DAIRY");
+        System.out.println("4. BREAD");
+        System.out.println("5. HOUSEHOLD");
+        System.out.println("6. HEALTH_AND_BEAUTY");
+        String choice = scanner.nextLine();
+
+        CategoryTranslate translate = new CategoryTranslate();
         Category category;
-        if (ch.equals(Integer.toString(1))) {
-            category = Category.FRESH_PRODUCE;
-        } else if (ch.equals(Integer.toString(2))) {
-            category = Category.MEAT;
-        } else if (ch.equals(Integer.toString(3))) {
-            category = Category.DAIRY;
-        } else if (ch.equals(Integer.toString(4))) {
-            category = Category.BREAD;
-        } else if (ch.equals(Integer.toString(5))) {
-            category = Category.HOUSEHOLD;
-        } else if (ch.equals(Integer.toString(6))) {
-            category = Category.HEALTH_AND_BEAUTY;
-        } else throw new IllegalArgumentException("Illegal category!");
+        category = translate.getCategory(choice);
 
         System.out.println("Enter product name:");
         String name = scanner.nextLine();
@@ -65,7 +55,6 @@ public class CreateProductAction implements Action {
         }
         product.setDescription(description);
         product.setCategory(category);
-
         try {
             Long response = productService.create(product);
             System.out.println("Response: " + response);
