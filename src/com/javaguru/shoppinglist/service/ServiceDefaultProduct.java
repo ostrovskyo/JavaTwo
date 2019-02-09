@@ -1,12 +1,12 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.InMemoryDatabase;
+import com.javaguru.shoppinglist.repository.Repository;
 
 public class ServiceDefaultProduct implements ServiceProduct {
 
     private Long PRODUCT_ID_SEQUENCE = 0L;
-    private InMemoryDatabase database = new InMemoryDatabase();
+    private Repository database = new Repository();
 
     public Product findBy(Long id) {
         if (id == null) {

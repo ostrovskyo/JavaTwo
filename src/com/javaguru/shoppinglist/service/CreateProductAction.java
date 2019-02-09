@@ -22,17 +22,15 @@ public class CreateProductAction implements Action {
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1. FRESH_PRODUCE");
-        System.out.println("2. MEAT");
-        System.out.println("3. DAIRY");
-        System.out.println("4. BREAD");
-        System.out.println("5. HOUSEHOLD");
-        System.out.println("6. HEALTH_AND_BEAUTY");
-        String choice = scanner.nextLine();
 
-        CategoryTranslate translate = new CategoryTranslate();
+        System.out.println("Choose product category:");
+        for (Category element : Category.values()) {
+            System.out.println(element.getValue() + ". " + element);
+        }
+
+        int choice = Integer.valueOf(scanner.nextLine());
         Category category;
-        category = translate.getCategory(choice);
+        category = Category.values()[choice];
 
         System.out.println("Enter product name:");
         String name = scanner.nextLine();
@@ -44,6 +42,9 @@ public class CreateProductAction implements Action {
         String description = scanner.nextLine();
 
         Product product = new Product();
+//        ValidationService validate = new ValidationService();
+//        validate(name, price, discount,category);
+
         if (new NameValidator().validate(name)) {
             product.setName(name);
         }

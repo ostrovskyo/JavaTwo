@@ -1,12 +1,12 @@
 package com.javaguru.shoppinglist.domain;
 
 public enum Category {
-    FRESH_PRODUCE(1),
-    MEAT(2),
-    DAIRY(3),
-    BREAD(4),
-    HOUSEHOLD(5),
-    HEALTH_AND_BEAUTY(6);
+    FRESH_PRODUCE(0),
+    MEAT(1),
+    DAIRY(2),
+    BREAD(3),
+    HOUSEHOLD(4),
+    HEALTH_AND_BEAUTY(5);
 
     public final int value;
 

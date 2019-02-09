@@ -5,7 +5,7 @@ import com.javaguru.shoppinglist.domain.Product;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InMemoryDatabase {
+public class Repository {
 
     private Map<Long, Product> database = new HashMap<>();
 
