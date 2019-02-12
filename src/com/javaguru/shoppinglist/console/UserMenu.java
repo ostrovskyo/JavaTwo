@@ -8,7 +8,7 @@ import java.util.List;
 public class UserMenu {
 
     private List<Action> actions = new ArrayList<>();
-    private ServiceProduct productService = new ServiceDefaultProduct();
+    private ProductService productService = new DefaultProductService();
     private Action exitAction = new ExitAction();
     private Action createUserAction = new CreateProductAction(productService);
     private Action findUserByIdAction = new FindProductByIdAction(productService);

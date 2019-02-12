@@ -1,20 +1,20 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.javaguru.shoppinglist.repository.Repository;
+import com.javaguru.shoppinglist.service.validation.ValidationService;
 
 public class DefaultProductService implements ProductService {
 
-    private Map<Long, Product> database = new HashMap<>();
-    private Long PRODUCT_ID_SEQUENCE = 0L;
+    private Long productIdSequence = 0L;
+    private Repository database = new Repository();
+    private ValidationService validationService = new ValidationService();
 
     public Product findBy(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("Id must be not null");
         }
-        return database.get(id);
+        return database.getProductById(id);
     }
 
     @Override
@@ -22,10 +22,12 @@ public class DefaultProductService implements ProductService {
         if (product == null) {
             throw new IllegalArgumentException("Cannot be null");
         }
-        product.setId(PRODUCT_ID_SEQUENCE);
 
-        database.put(PRODUCT_ID_SEQUENCE, product);
-        return PRODUCT_ID_SEQUENCE++;
+        validationService.validate(product);
+        product.setId(productIdSequence);
+
+        database.insertProduct(productIdSequence, product);
+        return productIdSequence++;
     }
 
 }

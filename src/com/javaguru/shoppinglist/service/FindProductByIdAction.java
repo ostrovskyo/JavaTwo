@@ -8,9 +8,9 @@ public class FindProductByIdAction implements Action {
 
     private static final String ACTION_NAME = "Find by ID";
 
-    private final ServiceProduct productService;
+    private final ProductService productService;
 
-    public FindProductByIdAction(ServiceProduct productService) {
+    public FindProductByIdAction(ProductService productService) {
         this.productService = productService;
     }
 

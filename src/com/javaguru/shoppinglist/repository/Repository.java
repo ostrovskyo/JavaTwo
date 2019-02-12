@@ -16,6 +16,4 @@ public class Repository {
     public void insertProduct(Long id, Product product) {
         database.put(id, product);
     }
-
-
 }
