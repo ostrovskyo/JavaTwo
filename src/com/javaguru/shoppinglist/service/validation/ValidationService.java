@@ -13,6 +13,8 @@ public class ValidationService {
         validationRuleSet.add(new ProductNameValidationRule());
         validationRuleSet.add(new ProductPriceValidationRule());
         validationRuleSet.add(new ProductDiscountValidationRule());
+        validationRuleSet.add(new ProductUniqueNameValidationRule());
+        validationRuleSet.add(new ProductDiscountAvailabilityCheck());
     }
 
     public void validate(Product product) {

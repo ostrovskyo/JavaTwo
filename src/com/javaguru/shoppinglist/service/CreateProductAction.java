@@ -32,16 +32,26 @@ public class CreateProductAction implements Action {
         System.out.println("Enter product name:");
         String name = scanner.nextLine();
         System.out.println("Enter product price: ");
-        String price = scanner.nextLine();
+        BigDecimal price = new BigDecimal(scanner.nextLine());
+
         System.out.println("Enter product discount(%): ");
-        String discount = scanner.nextLine();
+        BigDecimal discount;
+        String strDiscount = scanner.nextLine();
+        if (strDiscount.equals(null) || strDiscount.equals("")) {
+            discount = new BigDecimal(0);
+        } else discount = new BigDecimal(strDiscount);
+
         System.out.println("Enter product Description: ");
         String description = scanner.nextLine();
 
+        ActualPriceCalculation actualPriceCalculation = new ActualPriceCalculation();
+        BigDecimal actualPrice = actualPriceCalculation.getActualPrice(price, discount);
+
         Product product = new Product();
         product.setName(name);
-        product.setPrice(new BigDecimal(price));
-        product.setDiscount(Integer.valueOf(discount));
+        product.setPrice(price);
+        product.setDiscount(discount);
+        product.setActualPrice(actualPrice);
         product.setDescription(description);
         product.setCategory(category);
 

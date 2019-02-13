@@ -2,11 +2,13 @@ package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
 
+import java.math.BigDecimal;
+
 public class ProductDiscountValidationRule implements ProductValidationRule {
 
     @Override
     public void validate(Product product) {
-        if (Integer.valueOf(product.getDiscount()) < 0 || Integer.valueOf(product.getDiscount()) > 100) {
+        if (product.getDiscount().compareTo(BigDecimal.ZERO) < 0 || product.getDiscount().compareTo(BigDecimal.valueOf(100)) > 0) {
             throw new IllegalArgumentException("Illegal discount!");
         }
     }
