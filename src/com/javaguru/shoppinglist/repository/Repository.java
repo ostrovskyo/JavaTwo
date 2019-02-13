@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class Repository {
 
-    private Map<Long, Product> database = new HashMap<>();
+    private static final Map<Long, Product> database = new HashMap<>();
 
     public Product getProductById(Long id) {
         return database.get(id);
@@ -15,5 +15,14 @@ public class Repository {
 
     public void insertProduct(Long id, Product product) {
         database.put(id, product);
+    }
+
+    public Product getProductByName(String name) {
+        for (Product element : database.values()) {
+            if (element.getName().equals(name)) {
+                return element;
+            }
+        }
+        return null;
     }
 }
