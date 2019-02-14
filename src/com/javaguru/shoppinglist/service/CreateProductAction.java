@@ -39,13 +39,15 @@ public class CreateProductAction implements Action {
         String strDiscount = scanner.nextLine();
         if (strDiscount.equals(null) || strDiscount.equals("")) {
             discount = new BigDecimal(0);
-        } else discount = new BigDecimal(strDiscount);
+        } else {
+            discount = new BigDecimal(strDiscount);
+        }
 
         System.out.println("Enter product Description: ");
         String description = scanner.nextLine();
 
         ActualPriceCalculation actualPriceCalculation = new ActualPriceCalculation();
-        BigDecimal actualPrice = actualPriceCalculation.getActualPrice(price, discount);
+        BigDecimal actualPrice = actualPriceCalculation.calculateActualPrice(price, discount);
 
         Product product = new Product();
         product.setName(name);
