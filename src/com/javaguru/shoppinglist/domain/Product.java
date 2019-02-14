@@ -9,8 +9,9 @@ public class Product {
     private String name;
     private BigDecimal price;
     private Category category;
-    private int discount;
+    private BigDecimal discount;
     private String description;
+    private BigDecimal actualPrice;
 
     public Long getId() {
         return id;
@@ -44,12 +45,11 @@ public class Product {
         this.category = productCategory;
     }
 
-
-    public int getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int productDiscount) {
+    public void setDiscount(BigDecimal productDiscount) {
         this.discount = productDiscount;
     }
 
@@ -59,6 +59,14 @@ public class Product {
 
     public void setDescription(String productDescription) {
         this.description = productDescription;
+    }
+
+    public BigDecimal getActualPrice() {
+        return actualPrice;
+    }
+
+    public void setActualPrice(BigDecimal actualPrice) {
+        this.actualPrice = actualPrice;
     }
 
     @Override
@@ -71,12 +79,13 @@ public class Product {
                 Objects.equals(price, product.price) &&
                 category == product.category &&
                 Objects.equals(discount, product.discount) &&
-                Objects.equals(description, product.description);
+                Objects.equals(description, product.description) &&
+                Objects.equals(actualPrice, product.actualPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, price, category, discount, description);
+        return Objects.hash(id, name, price, category, discount, description, actualPrice);
     }
 
     @Override
@@ -88,6 +97,7 @@ public class Product {
                 ", category=" + category +
                 ", discount=" + discount +
                 ", description='" + description + '\'' +
+                ", actualPrice=" + actualPrice +
                 '}';
     }
 }

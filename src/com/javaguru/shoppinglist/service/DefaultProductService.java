@@ -10,9 +10,10 @@ public class DefaultProductService implements ProductService {
     private Repository database = new Repository();
     private ValidationService validationService = new ValidationService();
 
+    @Override
     public Product findBy(Long id) {
         if (id == null) {
-            throw new IllegalArgumentException("Id must be not null");
+            throw new IllegalArgumentException("Error: Id must be not null!");
         }
         return database.getProductById(id);
     }
@@ -20,7 +21,7 @@ public class DefaultProductService implements ProductService {
     @Override
     public Long create(Product product) {
         if (product == null) {
-            throw new IllegalArgumentException("Cannot be null");
+            throw new IllegalArgumentException("Error: Cannot be null!");
         }
 
         validationService.validate(product);
