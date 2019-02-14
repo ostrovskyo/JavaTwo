@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private UserMenu menu = new UserMenu();
+    private UserMainMenu menu = new UserMainMenu();
 
     public void start() {
         menu.createUserMenu();

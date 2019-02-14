@@ -1,13 +1,17 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.Repository;
+import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
 import com.javaguru.shoppinglist.service.validation.ValidationService;
 
 public class DefaultProductService implements ProductService {
 
     private Long productIdSequence = 0L;
-    private Repository database = new Repository();
+    private Long shoppingCartIdSequence = 0L;
+    private ProductRepository database = new ProductRepository();
+    private ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
     private ValidationService validationService = new ValidationService();
 
     @Override
@@ -31,4 +35,14 @@ public class DefaultProductService implements ProductService {
         return productIdSequence++;
     }
 
+    @Override
+    public Long createShoppingCart(ShoppingCart shoppingCart) {
+        if (shoppingCart == null) {
+            throw new IllegalArgumentException("Error: Cannot be null!");
+        }
+
+        shoppingCart.setId(shoppingCartIdSequence);
+        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
+        return shoppingCartIdSequence++;
+    }
 }

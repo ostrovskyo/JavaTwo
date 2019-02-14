@@ -5,17 +5,19 @@ import com.javaguru.shoppinglist.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserMenu {
+public class UserMainMenu {
 
     private List<Action> actions = new ArrayList<>();
     private ProductService productService = new DefaultProductService();
     private Action exitAction = new ExitAction();
     private Action createUserAction = new CreateProductAction(productService);
     private Action findUserByIdAction = new FindProductByIdAction(productService);
+    private Action createUserShoppingCartAction = new CreateUserShoppingCartAction(productService);
 
     public void createUserMenu() {
         actions.add(findUserByIdAction);
         actions.add(createUserAction);
+        actions.add(createUserShoppingCartAction);
         actions.add(exitAction);
     }
 
