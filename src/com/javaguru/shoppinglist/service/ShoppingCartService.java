@@ -4,13 +4,13 @@ public interface ShoppingCartService {
 
     void saveCurrentShoppingCart();
 
-    void switchShoppingCartById(Long id);
+//    void switchShoppingCartById(Long id);
 
-    void deleteShoppingCartById(Long id);
+//    void deleteShoppingCartById(Long id);
 
-    void addProductToCurrentShoppingCartById();
+//    void addProductToCurrentShoppingCartById();
 
-    void showCurrentShoppingCartContent();
+//    void showCurrentShoppingCartContent();
 
-    void showTotalPriceOfProductsInCurrentShoppingCart();
+//    void showTotalPriceOfProductsInCurrentShoppingCart();
 }
