@@ -36,7 +36,7 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public Long createShoppingCart(ShoppingCart shoppingCart) {
+    public Long saveShoppingCart(ShoppingCart shoppingCart) {
         if (shoppingCart == null) {
             throw new IllegalArgumentException("Error: Cannot be null!");
         }

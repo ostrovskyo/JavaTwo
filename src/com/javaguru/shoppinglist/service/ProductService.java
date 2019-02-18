@@ -9,5 +9,5 @@ public interface ProductService {
 
     Product findBy(Long id);
 
-    Long createShoppingCart(ShoppingCart shoppingCart);
+    Long saveShoppingCart(ShoppingCart shoppingCart);
 }

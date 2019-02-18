@@ -7,7 +7,6 @@ public class ShoppingCart {
 
     private Long id;
     private String name;
-    private String description;
     private List<Product> productList;
 
     public Long getId() {
@@ -34,14 +33,6 @@ public class ShoppingCart {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,13 +40,12 @@ public class ShoppingCart {
         ShoppingCart that = (ShoppingCart) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(description, that.description) &&
                 Objects.equals(productList, that.productList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, productList);
+        return Objects.hash(id, name, productList);
     }
 
     @Override
@@ -63,7 +53,6 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
                 ", productList=" + productList +
                 '}';
     }
