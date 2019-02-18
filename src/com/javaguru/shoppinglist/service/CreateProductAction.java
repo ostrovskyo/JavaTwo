@@ -37,11 +37,7 @@ public class CreateProductAction implements Action {
         System.out.println("Enter product discount(%): ");
         BigDecimal discount;
         String strDiscount = scanner.nextLine();
-        if (strDiscount.equals(null) || strDiscount.equals("")) {
-            discount = new BigDecimal(0);
-        } else {
-            discount = new BigDecimal(strDiscount);
-        }
+        discount = lineUpDiscount(strDiscount);
 
         System.out.println("Enter product Description: ");
         String description = scanner.nextLine();
@@ -63,6 +59,16 @@ public class CreateProductAction implements Action {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    private BigDecimal lineUpDiscount(String strDiscount) {
+        BigDecimal discount;
+        if (strDiscount.equals(null) || strDiscount.equals("")) {
+            discount = new BigDecimal(0);
+        } else {
+            discount = new BigDecimal(strDiscount);
+        }
+        return discount;
     }
 
     @Override

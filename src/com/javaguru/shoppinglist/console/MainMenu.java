@@ -5,7 +5,7 @@ import com.javaguru.shoppinglist.service.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserMainMenu {
+public class MainMenu {
 
     private List<Action> actions = new ArrayList<>();
     private ProductService productService = new DefaultProductService();
@@ -13,11 +13,17 @@ public class UserMainMenu {
     private Action createProductAction = new CreateProductAction(productService);
     private Action findProductByIdAction = new FindProductByIdAction(productService);
     private Action createShoppingCartAction = new CreateShoppingCartAction(productService);
+    private Action findShoppingCartByIdAction = new FindShoppingCartByIdAction(productService);
+    private Action printAllShoppingCartsAction = new PrintAllShoppingCartsAction(productService);
+    private Action deleteShoppingCartById = new DeleteShoppingCartAction(productService);
 
     public void createUserMenu() {
         actions.add(findProductByIdAction);
         actions.add(createProductAction);
         actions.add(createShoppingCartAction);
+        actions.add(findShoppingCartByIdAction);
+        actions.add(printAllShoppingCartsAction);
+        actions.add(deleteShoppingCartById);
         actions.add(exitAction);
     }
 

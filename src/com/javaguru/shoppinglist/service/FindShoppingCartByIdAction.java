@@ -1,25 +1,25 @@
 package com.javaguru.shoppinglist.service;
 
-import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.domain.ShoppingCart;
 
 import java.util.Scanner;
 
-public class FindProductByIdAction implements Action {
+public class FindShoppingCartByIdAction implements Action {
 
-    private static final String ACTION_NAME = "Find Product by id";
+    private static final String ACTION_NAME = "Find Shopping Cart by id";
 
     private final ProductService productService;
 
-    public FindProductByIdAction(ProductService productService) {
+    public FindShoppingCartByIdAction(ProductService productService) {
         this.productService = productService;
     }
 
     @Override
     public void execute() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter id: ");
+        System.out.println("Enter Shopping Cart id: ");
         Long id = scanner.nextLong();
-        Product response = productService.findBy(id);
+        ShoppingCart response = productService.findShoppingCartById(id);
         System.out.println("Response: " + response);
     }
 

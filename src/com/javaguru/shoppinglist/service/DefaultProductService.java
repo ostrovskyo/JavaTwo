@@ -25,7 +25,7 @@ public class DefaultProductService implements ProductService {
     @Override
     public Long create(Product product) {
         if (product == null) {
-            throw new IllegalArgumentException("Error: Cannot be null!");
+            throw new IllegalArgumentException("Error: Product must be not null!");
         }
 
         validationService.validate(product);
@@ -36,9 +36,9 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public Long saveShoppingCart(ShoppingCart shoppingCart) {
+    public Long createShoppingCart(ShoppingCart shoppingCart) {
         if (shoppingCart == null) {
-            throw new IllegalArgumentException("Error: Cannot be null!");
+            throw new IllegalArgumentException("Error: Shopping Cart must be not null!");
         }
 
         shoppingCart.setId(shoppingCartIdSequence);
@@ -47,10 +47,22 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public ShoppingCart selectShoppingCart(Long id) {
+    public ShoppingCart findShoppingCartById(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("Error: Id must be not null!");
         }
-        return shoppingCartDatabase.;
+        return shoppingCartDatabase.getShoppingCartById(id);
     }
+
+    @Override
+    public void printAllShoppingCarts() {
+        shoppingCartDatabase.printAllShoppingCarts();
+    }
+
+    @Override
+    public void deleteShoppingCartById(Long id) {
+        shoppingCartDatabase.deleteShoppingCartById(id);
+    }
+
+
 }

@@ -11,5 +11,9 @@ public interface ProductService {
 
     Long createShoppingCart(ShoppingCart shoppingCart);
 
-    ShoppingCart selectShoppingCart(Long id);
+    ShoppingCart findShoppingCartById(Long id);
+
+    void printAllShoppingCarts();
+
+    void deleteShoppingCartById(Long id);
 }

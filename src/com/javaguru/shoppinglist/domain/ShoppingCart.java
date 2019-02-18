@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist.domain;
 
+import com.javaguru.shoppinglist.service.TotalPriceCalculation;
+
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,6 +11,13 @@ public class ShoppingCart {
     private Long id;
     private String name;
     private List<Product> productList;
+
+    private TotalPriceCalculation totalPriceCalculation = new TotalPriceCalculation();
+    private BigDecimal totalPrice = new BigDecimal(0);
+
+    public void calculateTotalPrice() {
+        totalPrice = totalPriceCalculation.getTotalPrice(productList);
+    }
 
     public Long getId() {
         return id;
@@ -40,12 +50,14 @@ public class ShoppingCart {
         ShoppingCart that = (ShoppingCart) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(productList, that.productList);
+                Objects.equals(productList, that.productList) &&
+                Objects.equals(totalPriceCalculation, that.totalPriceCalculation) &&
+                Objects.equals(totalPrice, that.totalPrice);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, productList);
+        return Objects.hash(id, name, productList, totalPriceCalculation, totalPrice);
     }
 
     @Override
@@ -53,6 +65,7 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", totalPrice=" + totalPrice +
                 ", productList=" + productList +
                 '}';
     }

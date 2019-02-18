@@ -13,16 +13,17 @@ public class ShoppingCartRepository {
         database.put(id, shoppingCart);
     }
 
-    public void showAllShoppingCarts() {
-        for(ShoppingCart element : database.values()) {
+    public void printAllShoppingCarts() {
+        for (ShoppingCart element : database.values()) {
             System.out.println(element);
         }
     }
 
-    public Map getShoppingCartById(Long id) {
+    public ShoppingCart getShoppingCartById(Long id) {
         return database.get(id);
     }
 
-
-
+    public void deleteShoppingCartById(Long id) {
+        database.remove(id);
+    }
 }
