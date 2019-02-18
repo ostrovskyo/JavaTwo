@@ -10,7 +10,6 @@ public class SaveAction implements Action {
     private final ProductService productService;
 
     public Long saveShoppingCart(ShoppingCart shoppingCart) {
-
     }
 
     public SaveProductAction(ProductService productService) {
