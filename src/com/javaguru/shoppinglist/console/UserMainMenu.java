@@ -10,14 +10,14 @@ public class UserMainMenu {
     private List<Action> actions = new ArrayList<>();
     private ProductService productService = new DefaultProductService();
     private Action exitAction = new ExitAction();
-    private Action createUserAction = new CreateProductAction(productService);
-    private Action findUserByIdAction = new FindProductByIdAction(productService);
-    private Action createUserShoppingCartAction = new CreateUserShoppingCartAction(productService);
+    private Action createProductAction = new CreateProductAction(productService);
+    private Action findProductByIdAction = new FindProductByIdAction(productService);
+    private Action createShoppingCartAction = new CreateShoppingCartAction(productService);
 
     public void createUserMenu() {
-        actions.add(findUserByIdAction);
-        actions.add(createUserAction);
-        actions.add(createUserShoppingCartAction);
+        actions.add(findProductByIdAction);
+        actions.add(createProductAction);
+        actions.add(createShoppingCartAction);
         actions.add(exitAction);
     }
 

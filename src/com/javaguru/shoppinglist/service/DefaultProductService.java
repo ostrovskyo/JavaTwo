@@ -45,4 +45,12 @@ public class DefaultProductService implements ProductService {
         shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
         return shoppingCartIdSequence++;
     }
+
+    @Override
+    public ShoppingCart selectShoppingCart(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Error: Id must be not null!");
+        }
+        return shoppingCartDatabase.;
+    }
 }

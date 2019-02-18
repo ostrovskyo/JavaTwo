@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class CreateUserShoppingCartAction implements Action {
+public class CreateShoppingCartAction implements Action {
 
     private static final String ACTION_NAME = "Create ShoppingCart";
 
     private final ProductService productService;
 
-    public CreateUserShoppingCartAction(ProductService productService) {
+    public CreateShoppingCartAction(ProductService productService) {
         this.productService = productService;
     }
 
     @Override
     public void execute() {
-        String ch = null;
+        String choice = "null";
         Scanner scanner = new Scanner(System.in);
         List<Product> productList = new ArrayList<>();
         ProductRepository database = new ProductRepository();
@@ -30,11 +30,20 @@ public class CreateUserShoppingCartAction implements Action {
         System.out.println("Enter shopping cart description:");
         String description = scanner.nextLine();
 
-        System.out.println("Chose product \"id\" to add: ");
-        database.showAllProducts();
-        System.out.println("Or enter \"q\" for exit");
-        ch = scanner.nextLine();
-        productList.add(database.getProductById(Long.valueOf(ch)));
+        while (choice != "1") {
+            System.out.println("0. Add product to shopping cart");
+            System.out.println("1. Save shopping cart");
+            choice = scanner.nextLine();
+            switch (choice) {
+                case "0" :
+                    System.out.println("Chose product \"id\" to add: ");
+                    database.showAllProducts();
+                    productList.add(database.getProductById(Long.valueOf(scanner.nextLine())));
+                    break;
+                case "1" :
+                    return;
+            }
+        }
 
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setName(name);
@@ -47,8 +56,6 @@ public class CreateUserShoppingCartAction implements Action {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
-
     }
 
     @Override
