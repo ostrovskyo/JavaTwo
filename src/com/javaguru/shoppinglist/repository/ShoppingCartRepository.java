@@ -19,6 +19,10 @@ public class ShoppingCartRepository {
         }
     }
 
+    public Map getShoppingCartById(Long id) {
+        return database.get(id);
+    }
+
 
 
 }
