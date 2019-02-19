@@ -63,12 +63,16 @@ public class CreateProductAction implements Action {
 
     private BigDecimal lineUpDiscount(String strDiscount) {
         BigDecimal discount;
-        if (strDiscount.equals(null) || strDiscount.equals("")) {
+        if (isDiscountFieldEmpty(strDiscount)) {
             discount = new BigDecimal(0);
         } else {
             discount = new BigDecimal(strDiscount);
         }
         return discount;
+    }
+
+    private boolean isDiscountFieldEmpty(String strDiscount) {
+        return strDiscount.equals(null) || strDiscount.equals("");
     }
 
     @Override

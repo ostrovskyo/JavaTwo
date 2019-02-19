@@ -10,8 +10,12 @@ public class ProductDiscountAvailabilityCheck implements ProductValidationRule {
 
     @Override
     public void validate(Product product) {
-        if (product.getPrice().compareTo(BigDecimal.valueOf(DISCOUNT_MARGIN)) < 0 && product.getDiscount().compareTo(BigDecimal.ZERO) != 0) {
+        if (isPriceBehindDiscountMargin(product.getPrice())) {
             throw new IllegalArgumentException("Error!!! Discount cannot be set if price is less than 20$");
         }
+    }
+
+    private boolean isPriceBehindDiscountMargin(BigDecimal price) {
+       return price.compareTo(BigDecimal.valueOf(DISCOUNT_MARGIN)) < 0 && price.compareTo(BigDecimal.ZERO) != 0;
     }
 }
