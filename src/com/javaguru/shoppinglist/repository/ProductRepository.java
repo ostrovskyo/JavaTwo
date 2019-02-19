@@ -5,7 +5,7 @@ import com.javaguru.shoppinglist.domain.Product;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Repository {
+public class ProductRepository {
 
     private static final Map<Long, Product> database = new HashMap<>();
 
@@ -24,5 +24,11 @@ public class Repository {
             }
         }
         return null;
+    }
+
+    public void showAllProducts() {
+        for (Product element : database.values()) {
+            System.out.println(element);
+        }
     }
 }

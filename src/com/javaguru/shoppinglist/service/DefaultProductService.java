@@ -1,13 +1,17 @@
 package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.Repository;
+import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
 import com.javaguru.shoppinglist.service.validation.ValidationService;
 
 public class DefaultProductService implements ProductService {
 
     private Long productIdSequence = 0L;
-    private Repository database = new Repository();
+    private Long shoppingCartIdSequence = 0L;
+    private ProductRepository database = new ProductRepository();
+    private ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
     private ValidationService validationService = new ValidationService();
 
     @Override
@@ -21,7 +25,7 @@ public class DefaultProductService implements ProductService {
     @Override
     public Long create(Product product) {
         if (product == null) {
-            throw new IllegalArgumentException("Error: Cannot be null!");
+            throw new IllegalArgumentException("Error: Product must be not null!");
         }
 
         validationService.validate(product);
@@ -30,5 +34,35 @@ public class DefaultProductService implements ProductService {
         database.insertProduct(productIdSequence, product);
         return productIdSequence++;
     }
+
+    @Override
+    public Long createShoppingCart(ShoppingCart shoppingCart) {
+        if (shoppingCart == null) {
+            throw new IllegalArgumentException("Error: Shopping Cart must be not null!");
+        }
+
+        shoppingCart.setId(shoppingCartIdSequence);
+        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
+        return shoppingCartIdSequence++;
+    }
+
+    @Override
+    public ShoppingCart findShoppingCartById(Long id) {
+        if (id == null) {
+            throw new IllegalArgumentException("Error: Id must be not null!");
+        }
+        return shoppingCartDatabase.getShoppingCartById(id);
+    }
+
+    @Override
+    public void printAllShoppingCarts() {
+        shoppingCartDatabase.printAllShoppingCarts();
+    }
+
+    @Override
+    public void deleteShoppingCartById(Long id) {
+        shoppingCartDatabase.deleteShoppingCartById(id);
+    }
+
 
 }

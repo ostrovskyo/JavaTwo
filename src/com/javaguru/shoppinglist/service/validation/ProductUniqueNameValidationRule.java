@@ -1,11 +1,11 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.Repository;
+import com.javaguru.shoppinglist.repository.ProductRepository;
 
 public class ProductUniqueNameValidationRule implements ProductValidationRule{
 
-    Repository repository = new Repository();
+    ProductRepository repository = new ProductRepository();
 
     @Override
     public void validate(Product product) {

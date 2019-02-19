@@ -1,16 +1,14 @@
 package com.javaguru.shoppinglist.service;
 
-import com.javaguru.shoppinglist.domain.Product;
-
 import java.util.Scanner;
 
-public class FindProductByIdAction implements Action {
+public class DeleteShoppingCartAction implements Action {
 
-    private static final String ACTION_NAME = "Find Product by id";
+    private static final String ACTION_NAME = "Delete Shopping Cart by id";
 
     private final ProductService productService;
 
-    public FindProductByIdAction(ProductService productService) {
+    public DeleteShoppingCartAction(ProductService productService) {
         this.productService = productService;
     }
 
@@ -19,8 +17,7 @@ public class FindProductByIdAction implements Action {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter id: ");
         Long id = scanner.nextLong();
-        Product response = productService.findBy(id);
-        System.out.println("Response: " + response);
+        productService.deleteShoppingCartById(id);
     }
 
     @Override
