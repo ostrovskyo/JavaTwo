@@ -1,6 +1,8 @@
-package com.javaguru.shoppinglist.service;
+package com.javaguru.shoppinglist.service.actions;
 
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.service.actions.Action;
 
 import java.util.Scanner;
 

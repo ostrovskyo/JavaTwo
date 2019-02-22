@@ -9,6 +9,7 @@ public class ProductUniqueNameValidationRule implements ProductValidationRule{
 
     @Override
     public void validate(Product product) {
+        checkNotNull(product);
         if (repository.getProductByName(product.getName()) != null) {
             throw new IllegalArgumentException("Error: Product with name \"" + product.getName() + "\" already exists!");
         }

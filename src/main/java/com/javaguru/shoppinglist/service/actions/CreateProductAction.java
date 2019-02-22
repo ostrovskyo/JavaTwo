@@ -1,7 +1,10 @@
-package com.javaguru.shoppinglist.service;
+package com.javaguru.shoppinglist.service.actions;
 
 import com.javaguru.shoppinglist.domain.Category;
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.service.ActualPriceCalculation;
+import com.javaguru.shoppinglist.service.ProductService;
+import com.javaguru.shoppinglist.service.actions.Action;
 
 import java.math.BigDecimal;
 import java.util.Scanner;

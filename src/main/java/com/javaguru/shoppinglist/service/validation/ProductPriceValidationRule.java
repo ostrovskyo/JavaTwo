@@ -8,6 +8,7 @@ public class ProductPriceValidationRule implements ProductValidationRule {
 
     @Override
     public void validate(Product product) {
+        checkNotNull(product);
         if (product.getPrice().compareTo(BigDecimal.ZERO) < 0) {
             throw new IllegalArgumentException("Illegal price!");
         }

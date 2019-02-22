@@ -10,6 +10,7 @@ public class ProductDiscountAvailabilityCheck implements ProductValidationRule {
 
     @Override
     public void validate(Product product) {
+        checkNotNull(product);
         if (isPriceBehindDiscountMargin(product.getPrice())) {
             throw new IllegalArgumentException("Error!!! Discount cannot be set if price is less than 20$");
         }
