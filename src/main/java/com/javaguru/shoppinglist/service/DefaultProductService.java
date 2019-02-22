@@ -4,15 +4,14 @@ import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
-import com.javaguru.shoppinglist.service.validation.ValidationService;
+import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 
 public class DefaultProductService implements ProductService {
 
-    private Long productIdSequence = 0L;
     private Long shoppingCartIdSequence = 0L;
     private ProductRepository database = new ProductRepository();
     private ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
-    private ValidationService validationService = new ValidationService();
+    private ProductValidationService productValidationService = new ProductValidationService();
 
     @Override
     public Product findBy(Long id) {
@@ -28,11 +27,9 @@ public class DefaultProductService implements ProductService {
             throw new IllegalArgumentException("Error: Product must be not null!");
         }
 
-        validationService.validate(product);
-        product.setId(productIdSequence);
-
-        database.insertProduct(productIdSequence, product);
-        return productIdSequence++;
+        productValidationService.validate(product);
+        Product createdProduct = database.insertProduct(product);
+        return createdProduct.getId();
     }
 
     @Override
