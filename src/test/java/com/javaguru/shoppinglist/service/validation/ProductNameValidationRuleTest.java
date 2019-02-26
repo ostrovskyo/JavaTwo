@@ -5,6 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 public class ProductNameValidationRuleTest {
 
     @Rule
@@ -18,10 +20,9 @@ public class ProductNameValidationRuleTest {
     public void shouldThrowProductNameValidationException() {
         input = productSetName(null);
 
-        expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Name cannot be null!");
-
-        victim.validate(input);
+        assertThatThrownBy(() -> victim.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Name cannot be null!");
     }
 
     @Test
