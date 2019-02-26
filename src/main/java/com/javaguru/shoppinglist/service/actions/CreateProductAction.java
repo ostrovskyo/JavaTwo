@@ -4,7 +4,6 @@ import com.javaguru.shoppinglist.domain.Category;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.ActualPriceCalculation;
 import com.javaguru.shoppinglist.service.ProductService;
-import com.javaguru.shoppinglist.service.actions.Action;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -75,7 +74,7 @@ public class CreateProductAction implements Action {
     }
 
     private boolean isDiscountFieldEmpty(String strDiscount) {
-        return strDiscount.equals(null) || strDiscount.equals("");
+        return strDiscount == null || strDiscount.equals("");
     }
 
     @Override
