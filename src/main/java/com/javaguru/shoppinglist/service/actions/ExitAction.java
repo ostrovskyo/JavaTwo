@@ -1,4 +1,6 @@
-package com.javaguru.shoppinglist.service;
+package com.javaguru.shoppinglist.service.actions;
+
+import com.javaguru.shoppinglist.service.actions.Action;
 
 public class ExitAction implements Action {
 

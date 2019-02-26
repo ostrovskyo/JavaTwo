@@ -4,8 +4,11 @@ import com.javaguru.shoppinglist.domain.Product;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 public class ProductRepository {
+
+    private Long productIdSequence = 0L;
 
     private static final Map<Long, Product> database = new HashMap<>();
 
@@ -13,17 +16,20 @@ public class ProductRepository {
         return database.get(id);
     }
 
-    public void insertProduct(Long id, Product product) {
-        database.put(id, product);
+    public Product insertProduct(Product product) {
+        product.setId(productIdSequence);
+        database.put(productIdSequence, product);
+        productIdSequence++;
+        return product;
     }
 
-    public Product getProductByName(String name) {
+    public Optional<Product> getProductByName(String name) {
         for (Product element : database.values()) {
             if (element.getName().equals(name)) {
-                return element;
+                return Optional.of(element);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public void showAllProducts() {

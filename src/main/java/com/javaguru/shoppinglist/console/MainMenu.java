@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.console;
 
 import com.javaguru.shoppinglist.service.*;
+import com.javaguru.shoppinglist.service.actions.*;
 
 import java.util.ArrayList;
 import java.util.List;
