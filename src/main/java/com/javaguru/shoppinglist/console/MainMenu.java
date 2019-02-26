@@ -1,5 +1,6 @@
 package com.javaguru.shoppinglist.console;
 
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.*;
 import com.javaguru.shoppinglist.service.actions.*;
 
@@ -9,7 +10,13 @@ import java.util.List;
 public class MainMenu {
 
     private List<Action> actions = new ArrayList<>();
-    private ProductService productService = new DefaultProductService();
+//    private ProductService productService = new DefaultProductService();
+    private final ProductService productService;
+
+    public MainMenu(ProductService productService) {
+        this.productService = productService;
+    }
+
     private Action exitAction = new ExitAction();
     private Action createProductAction = new CreateProductAction(productService);
     private Action findProductByIdAction = new FindProductByIdAction(productService);
