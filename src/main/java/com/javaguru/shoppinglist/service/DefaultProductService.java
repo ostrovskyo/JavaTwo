@@ -10,15 +10,13 @@ public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
 
-//    private ProductRepository database = new ProductRepository();
     private final ProductRepository database;
-//    private ProductValidationService productValidationService = new ProductValidationService();
     private final ProductValidationService productValidationService;
+    private final ShoppingCartRepository shoppingCartDatabase;
 
-    private ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
-
-    public DefaultProductService(ProductRepository database, ProductValidationService productValidationService) {
+    public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
         this.database = database;
+        this.shoppingCartDatabase = shoppingCartDatabase;
         this.productValidationService = productValidationService;
     }
 

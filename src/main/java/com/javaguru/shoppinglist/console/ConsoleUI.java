@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 public class ConsoleUI {
 
-    private MainMenu menu = new MainMenu();
+    private final MainMenu menu;
+
+    public ConsoleUI(MainMenu menu) {
+        this.menu = menu;
+    }
 
     public void start() {
-        menu.createUserMenu();
         Scanner scanner = new Scanner(System.in);
         int response = 0;
 

@@ -5,35 +5,38 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.math.BigDecimal;
+
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class ProductNameValidationRuleTest {
+public class ProductDiscountAvailabilityCheckTest {
 
     @Rule
     public final ExpectedException expectedException = ExpectedException.none();
-
-    private ProductNameValidationRule victim = new ProductNameValidationRule();
-
+    private ProductDiscountAvailabilityCheck victim = new ProductDiscountAvailabilityCheck();
     private Product input;
 
     @Test
-    public void shouldThrowProductNameValidationException() {
-        input = productSetName(null);
-
+    public void shouldThrowProductDiscountAvailabilityException() {
+        input = productSetDiscount(new BigDecimal(10), new BigDecimal(50));
         assertThatThrownBy(() -> victim.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("Name cannot be null!");
+                .hasMessage("Error!!! Discount cannot be set if price is less than 20$");
     }
 
     @Test
     public void shouldValidateSuccess() {
-        input = productSetName("valid name");
+        input = productSetDiscount(new BigDecimal(22), new BigDecimal(10));
         victim.validate(input);
     }
 
-    private Product productSetName(String name) {
+    private Product productSetDiscount(BigDecimal price, BigDecimal discount) {
         Product product = new Product();
-        product.setName(name);
+        product.setPrice(price);
+        product.setDiscount(discount);
         return product;
     }
+
+
+
 }
