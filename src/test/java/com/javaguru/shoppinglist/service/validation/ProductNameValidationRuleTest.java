@@ -23,6 +23,8 @@ public class ProductNameValidationRuleTest {
         assertThatThrownBy(() -> victim.validate(input))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Name cannot be null!");
+
+
     }
 
     @Test

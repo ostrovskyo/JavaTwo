@@ -23,7 +23,7 @@ class ShoppingListApplication {
         ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
 
         ProductValidationRule productNameValidationRule = new ProductNameValidationRule();
-        ProductValidationRule productUniqueNameValidationRule = new ProductUniqueNameValidationRule();
+        ProductValidationRule productUniqueNameValidationRule = new ProductUniqueNameValidationRule(productRepository);
         ProductValidationRule productPriceValidationRule = new ProductPriceValidationRule();
         ProductValidationRule productDiscountValidationRule = new ProductDiscountValidationRule();
         ProductValidationRule productDiscountAvailabilityCheck = new ProductDiscountAvailabilityCheck();
