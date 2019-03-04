@@ -1,7 +1,10 @@
 package com.javaguru.shoppinglist.console;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class ConsoleUI {
 
     private final MainMenu menu;
