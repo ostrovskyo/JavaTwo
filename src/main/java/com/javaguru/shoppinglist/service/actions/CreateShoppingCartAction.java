@@ -16,8 +16,11 @@ public class CreateShoppingCartAction implements Action {
 
     private final ProductService productService;
 
-    public CreateShoppingCartAction(ProductService productService) {
+    private final ProductRepository database;
+
+    public CreateShoppingCartAction(ProductService productService, ProductRepository database) {
         this.productService = productService;
+        this.database = database;
     }
 
     @Override
@@ -25,7 +28,6 @@ public class CreateShoppingCartAction implements Action {
         String choice = "null";
         Scanner scanner = new Scanner(System.in);
         List<Product> productList = new ArrayList<>();
-        ProductRepository database = new ProductRepository();
 
         System.out.println("Enter Shopping Cart name:");
         String name = scanner.nextLine();

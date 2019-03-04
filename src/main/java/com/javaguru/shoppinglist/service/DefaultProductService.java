@@ -9,9 +9,16 @@ import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
-    private ProductRepository database = new ProductRepository();
-    private ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
-    private ProductValidationService productValidationService = new ProductValidationService();
+
+    private final ProductRepository database;
+    private final ProductValidationService productValidationService;
+    private final ShoppingCartRepository shoppingCartDatabase;
+
+    public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
+        this.database = database;
+        this.shoppingCartDatabase = shoppingCartDatabase;
+        this.productValidationService = productValidationService;
+    }
 
     @Override
     public Product findBy(Long id) {
