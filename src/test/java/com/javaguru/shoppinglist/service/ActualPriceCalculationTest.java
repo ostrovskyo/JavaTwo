@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist.service;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Spy;
 
@@ -21,13 +20,4 @@ public class ActualPriceCalculationTest {
 
         assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
 }

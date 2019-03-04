@@ -51,8 +51,6 @@ public class ProductUniqueNameValidationRuleTest {
         verify(victim).checkNotNull(product);
     }
 
-
-
     private Product product() {
         Product product = new Product();
         product.setId(100L);
@@ -64,8 +62,4 @@ public class ProductUniqueNameValidationRuleTest {
         product.setActualPrice(new BigDecimal(50));
         return product;
     }
-
-
-
-
 }
