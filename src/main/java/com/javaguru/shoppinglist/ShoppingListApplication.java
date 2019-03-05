@@ -21,46 +21,46 @@ class ShoppingListApplication {
 
     public static void main(String[] args) {
 
-        ProductRepository productRepository = new ProductRepository();
+//        ProductRepository productRepository = new ProductRepository();
+//
+//        ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
+//
+//        ProductValidationRule productNameValidationRule = new ProductNameValidationRule();
+//        ProductValidationRule productUniqueNameValidationRule = new ProductUniqueNameValidationRule(productRepository);
+//        ProductValidationRule productPriceValidationRule = new ProductPriceValidationRule();
+//        ProductValidationRule productDiscountValidationRule = new ProductDiscountValidationRule();
+//        ProductValidationRule productDiscountAvailabilityCheck = new ProductDiscountAvailabilityCheck();
+//
+//        Set<ProductValidationRule> validations = new HashSet<>();
+//        validations.add(productNameValidationRule);
+//        validations.add(productUniqueNameValidationRule);
+//        validations.add(productPriceValidationRule);
+//        validations.add(productDiscountValidationRule);
+//        validations.add(productDiscountAvailabilityCheck);
+//
+//        ProductValidationService validationService = new ProductValidationService(validations);
+//
+//        ProductService productService = new DefaultProductService(productRepository, shoppingCartDatabase, validationService);
+//
+//        List<Action> actions = new ArrayList<>();
+//
+//        Action exitAction = new ExitAction();
+//        Action createProductAction = new CreateProductAction(productService);
+//        Action findProductByIdAction = new FindProductByIdAction(productService);
+//        Action createShoppingCartAction = new CreateShoppingCartAction(productService, productRepository);
+//        Action findShoppingCartByIdAction = new FindShoppingCartByIdAction(productService);
+//        Action printAllShoppingCartsAction = new PrintAllShoppingCartsAction(productService);
+//        Action deleteShoppingCartById = new DeleteShoppingCartAction(productService);
+//
+//        actions.add(findProductByIdAction);
+//        actions.add(createProductAction);
+//        actions.add(createShoppingCartAction);
+//        actions.add(findShoppingCartByIdAction);
+//        actions.add(printAllShoppingCartsAction);
+//        actions.add(deleteShoppingCartById);
+//        actions.add(exitAction);
 
-        ShoppingCartRepository shoppingCartDatabase = new ShoppingCartRepository();
-
-        ProductValidationRule productNameValidationRule = new ProductNameValidationRule();
-        ProductValidationRule productUniqueNameValidationRule = new ProductUniqueNameValidationRule(productRepository);
-        ProductValidationRule productPriceValidationRule = new ProductPriceValidationRule();
-        ProductValidationRule productDiscountValidationRule = new ProductDiscountValidationRule();
-        ProductValidationRule productDiscountAvailabilityCheck = new ProductDiscountAvailabilityCheck();
-
-        Set<ProductValidationRule> validations = new HashSet<>();
-        validations.add(productNameValidationRule);
-        validations.add(productUniqueNameValidationRule);
-        validations.add(productPriceValidationRule);
-        validations.add(productDiscountValidationRule);
-        validations.add(productDiscountAvailabilityCheck);
-
-        ProductValidationService validationService = new ProductValidationService(validations);
-
-        ProductService productService = new DefaultProductService(productRepository, shoppingCartDatabase, validationService);
-
-        List<Action> actions = new ArrayList<>();
-
-        Action exitAction = new ExitAction();
-        Action createProductAction = new CreateProductAction(productService);
-        Action findProductByIdAction = new FindProductByIdAction(productService);
-        Action createShoppingCartAction = new CreateShoppingCartAction(productService, productRepository);
-        Action findShoppingCartByIdAction = new FindShoppingCartByIdAction(productService);
-        Action printAllShoppingCartsAction = new PrintAllShoppingCartsAction(productService);
-        Action deleteShoppingCartById = new DeleteShoppingCartAction(productService);
-
-        actions.add(findProductByIdAction);
-        actions.add(createProductAction);
-        actions.add(createShoppingCartAction);
-        actions.add(findShoppingCartByIdAction);
-        actions.add(printAllShoppingCartsAction);
-        actions.add(deleteShoppingCartById);
-        actions.add(exitAction);
-
-        MainMenu menu = new MainMenu(productService, actions);
+//        MainMenu menu = new MainMenu(productService, actions);
 
         ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ConsoleUI ui = context.getBean(ConsoleUI.class);

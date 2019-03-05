@@ -5,7 +5,10 @@ import com.javaguru.shoppinglist.domain.ShoppingCart;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
@@ -14,6 +17,7 @@ public class DefaultProductService implements ProductService {
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;
 
+    @Autowired
     public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
         this.database = database;
         this.shoppingCartDatabase = shoppingCartDatabase;

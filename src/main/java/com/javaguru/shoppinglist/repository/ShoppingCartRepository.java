@@ -1,10 +1,12 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class ShoppingCartRepository {
 
     private static final Map<Long, ShoppingCart> database = new HashMap<>();
