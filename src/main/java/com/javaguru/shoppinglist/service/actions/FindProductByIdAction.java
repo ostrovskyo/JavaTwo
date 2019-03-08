@@ -3,15 +3,19 @@ package com.javaguru.shoppinglist.service.actions;
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.service.ProductService;
 import com.javaguru.shoppinglist.service.actions.Action;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
+@Component
 public class FindProductByIdAction implements Action {
 
     private static final String ACTION_NAME = "Find Product by id";
 
     private final ProductService productService;
 
+    @Autowired
     public FindProductByIdAction(ProductService productService) {
         this.productService = productService;
     }
