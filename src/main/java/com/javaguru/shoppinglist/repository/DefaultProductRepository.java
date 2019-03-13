@@ -31,12 +31,11 @@ public class DefaultProductRepository implements ProductRepository {
 
     @Override
     public Long insertProduct(Product product) {
-        String query = "insert into tasks (category, name, price, discount, description, actual_price) values (?, ?, ?, ?, ?, ?, ?)";
+        String query = "insert into products (category, name, price, discount, description, actual_price) values (?, ?, ?, ?, ?, ?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         jdbcTemplate.update(connection -> {
-            PreparedStatement ps = connection
-                    .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement ps = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, String.valueOf(product.getCategory()));
             ps.setString(2, product.getName());
             ps.setBigDecimal(3, product.getPrice());

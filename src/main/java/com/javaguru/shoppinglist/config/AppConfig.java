@@ -26,7 +26,7 @@ public class AppConfig {
     @Value("${database.user.name}")
     private String userName;
 
-    @Value("root")
+    @Value("${database.user.password}")
     private String password;
 
     @Bean
