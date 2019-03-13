@@ -6,11 +6,11 @@ import java.util.Optional;
 
 public interface ProductRepository {
 
-    public Product getProductById(Long id);
+    Product getProductById(Long id);
 
-    public Long insertProduct(Product product);
+    Long insertProduct(Product product);
 
-    public Optional<Product> getProductByName(String name);
+    Optional<Product> getProductByName(String name);
 
-    public void showAllProducts();
+    void showAllProducts();
 }
