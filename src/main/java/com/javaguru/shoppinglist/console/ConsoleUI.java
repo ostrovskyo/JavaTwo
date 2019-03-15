@@ -5,12 +5,12 @@ import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
-@Component
+//@Component
 public class ConsoleUI {
 
     private final MainMenu menu;
 
-    @Autowired
+//    @Autowired
     public ConsoleUI(MainMenu menu) {
         this.menu = menu;
     }
