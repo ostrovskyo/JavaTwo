@@ -2,7 +2,8 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.DefaultProductRepository;
+import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,14 @@ public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
 
-    private final ProductRepository database;
+//    private final ProductInMemoryRepository database;
+    private final DefaultProductRepository database;
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;
 
     @Autowired
-    public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
+//    public DefaultProductService(ProductInMemoryRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
+    public DefaultProductService(DefaultProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
         this.database = database;
         this.shoppingCartDatabase = shoppingCartDatabase;
         this.productValidationService = productValidationService;
@@ -39,8 +42,8 @@ public class DefaultProductService implements ProductService {
         }
 
         productValidationService.validate(product);
-        Product createdProduct = database.insertProduct(product);
-        return createdProduct.getId();
+        Long createdProduct = database.insertProduct(product);
+        return createdProduct;
     }
 
     @Override
