@@ -7,7 +7,7 @@ public interface ProductService {
 
     Long create(Product product);
 
-    Product findBy(Long id);
+    Product findById(Long id);
 
     Long createShoppingCart(ShoppingCart shoppingCart);
 

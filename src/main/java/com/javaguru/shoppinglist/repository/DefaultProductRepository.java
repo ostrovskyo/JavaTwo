@@ -3,6 +3,7 @@ package com.javaguru.shoppinglist.repository;
 import com.javaguru.shoppinglist.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,7 +28,10 @@ public class DefaultProductRepository implements ProductRepository {
 
     @Override
     public Product getProductById(Long id) {
-        return null;
+        String query = "select * from products where id=" + id;
+        List<Product> products = jdbcTemplate.query(query,
+                new BeanPropertyRowMapper(Product.class));
+        return products.get(0);
     }
 
     @Override
@@ -49,11 +54,24 @@ public class DefaultProductRepository implements ProductRepository {
 
     @Override
     public Optional<Product> getProductByName(String name) {
+        String query = "select * from products where name=" + "name";
+        List<Product> products = jdbcTemplate.query(query,
+                new BeanPropertyRowMapper(Product.class));
+
+        if (!products.isEmpty()) {
+            return Optional.ofNullable(products.get(0));
+        }
         return Optional.empty();
     }
 
     @Override
     public void showAllProducts() {
+        String query = "select * from products";
+        List<Product> products = jdbcTemplate.query(query,
+                new BeanPropertyRowMapper(Product.class));
 
+        for (Product element : products) {
+            System.out.println(element);
+        }
     }
 }

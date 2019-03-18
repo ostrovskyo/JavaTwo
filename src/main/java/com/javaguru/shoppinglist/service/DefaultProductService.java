@@ -14,13 +14,11 @@ public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
 
-//    private final ProductInMemoryRepository database;
     private final DefaultProductRepository database;
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;
 
     @Autowired
-//    public DefaultProductService(ProductInMemoryRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
     public DefaultProductService(DefaultProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
         this.database = database;
         this.shoppingCartDatabase = shoppingCartDatabase;
@@ -28,7 +26,7 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public Product findBy(Long id) {
+    public Product findById(Long id) {
         if (id == null) {
             throw new IllegalArgumentException("Error: Id must be not null!");
         }
