@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist.console;
 
-import com.javaguru.shoppinglist.service.*;
 import com.javaguru.shoppinglist.service.actions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,11 +10,9 @@ import java.util.List;
 public class MainMenu {
 
     private final List<Action> actions;
-    private final ProductService productService;
 
     @Autowired
-    public MainMenu(ProductService productService, List<Action> actions) {
-        this.productService = productService;
+    public MainMenu(List<Action> actions) {
         this.actions = actions;
     }
 

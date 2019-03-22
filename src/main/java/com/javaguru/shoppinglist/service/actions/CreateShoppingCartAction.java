@@ -2,7 +2,8 @@ package com.javaguru.shoppinglist.service.actions;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import com.javaguru.shoppinglist.repository.ProductRepository;
+import com.javaguru.shoppinglist.repository.DefaultProductRepository;
+import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,10 +19,10 @@ public class CreateShoppingCartAction implements Action {
 
     private final ProductService productService;
 
-    private final ProductRepository database;
+    private final DefaultProductRepository database;
 
     @Autowired
-    public CreateShoppingCartAction(ProductService productService, ProductRepository database) {
+    public CreateShoppingCartAction(ProductService productService, DefaultProductRepository database) {
         this.productService = productService;
         this.database = database;
     }
@@ -41,9 +42,10 @@ public class CreateShoppingCartAction implements Action {
             choice = scanner.nextLine();
             switch (choice) {
                 case "0":
-                    System.out.println("Chose product \"id\" to add: ");
+                    System.out.println("All product list: ");
                     database.showAllProducts();
-                    productList.add(database.getProductById(Long.valueOf(scanner.nextLine())));
+                    System.out.println("Chose product \"id\" to add: ");
+                    productList.add(database.getProductById(Long.valueOf(choice)));
                     break;
                 case "1":
                     ShoppingCart shoppingCart = new ShoppingCart();
