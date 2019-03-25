@@ -2,8 +2,8 @@ package com.javaguru.shoppinglist.service.actions;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import com.javaguru.shoppinglist.repository.DefaultProductRepository;
-import com.javaguru.shoppinglist.repository.ProductInMemoryRepository;
+import com.javaguru.shoppinglist.repository.JdbcProductRepository;
+import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,10 +19,10 @@ public class CreateShoppingCartAction implements Action {
 
     private final ProductService productService;
 
-    private final DefaultProductRepository database;
+    private final ProductRepository database;
 
     @Autowired
-    public CreateShoppingCartAction(ProductService productService, DefaultProductRepository database) {
+    public CreateShoppingCartAction(ProductService productService, ProductRepository database) {
         this.productService = productService;
         this.database = database;
     }

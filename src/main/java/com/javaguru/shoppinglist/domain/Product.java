@@ -1,15 +1,34 @@
 package com.javaguru.shoppinglist.domain;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private BigDecimal price;
+
+    @Column(name = "category", columnDefinition = "varchar")
     private Category category;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "price", columnDefinition = "float")
+    private BigDecimal price;
+
+    @Column(name = "discount", columnDefinition = "float")
     private BigDecimal discount;
+
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "actual_price", columnDefinition = "float")
     private BigDecimal actualPrice;
 
     public Long getId() {
