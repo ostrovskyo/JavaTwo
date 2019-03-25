@@ -14,6 +14,7 @@ public class Product {
     private Long id;
 
     @Column(name = "category", columnDefinition = "varchar")
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @Column(name = "name")

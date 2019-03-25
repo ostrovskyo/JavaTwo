@@ -1,12 +1,16 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.sun.org.apache.regexp.internal.RE;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -23,7 +27,10 @@ public class HibernateProductRepository implements ProductRepository {
 
     @Override
     public Product getProductById(Long id) {
-        return null;
+        Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        return product;
     }
 
     @Override
@@ -34,11 +41,18 @@ public class HibernateProductRepository implements ProductRepository {
 
     @Override
     public Optional<Product> getProductByName(String name) {
-        return Optional.empty();
+        Product product = (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
+                .add(Restrictions.eq("name", name))
+                .uniqueResult();
+        return Optional.ofNullable(product);
     }
 
     @Override
     public void showAllProducts() {
+        List<Product> products = sessionFactory.getCurrentSession().createCriteria(Product.class).list();
 
+        for (Product element : products) {
+            System.out.println(element);
+        }
     }
 }
