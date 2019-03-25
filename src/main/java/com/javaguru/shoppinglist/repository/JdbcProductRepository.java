@@ -16,13 +16,13 @@ import java.util.Optional;
 
 
 @Component
-@Profile({"local", "dev"})
-public class DefaultProductRepository implements ProductRepository {
+@Profile("jdbc")
+public class JdbcProductRepository implements ProductRepository {
 
     private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    DefaultProductRepository(JdbcTemplate jdbcTemplate) {
+    JdbcProductRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
@@ -54,7 +54,7 @@ public class DefaultProductRepository implements ProductRepository {
 
     @Override
     public Optional<Product> getProductByName(String name) {
-        String query = "select * from products where name=" + "name";
+        String query = "select * from products where name=\'" + name + "\'";
         List<Product> products = jdbcTemplate.query(query,
                 new BeanPropertyRowMapper(Product.class));
 
