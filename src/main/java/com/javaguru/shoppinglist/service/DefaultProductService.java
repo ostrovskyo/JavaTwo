@@ -15,8 +15,6 @@ public class DefaultProductService implements ProductService {
 
     private Long shoppingCartIdSequence = 0L;
 
-    //    private final JdbcProductRepository database;
-//    private final HibernateProductRepository database;
     private final ProductRepository database;
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;

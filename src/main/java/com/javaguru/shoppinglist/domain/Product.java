@@ -32,6 +32,17 @@ public class Product {
     @Column(name = "actual_price", columnDefinition = "float")
     private BigDecimal actualPrice;
 
+//    @ManyToOne
+//    private ShoppingCart shoppingCart;
+
+//    public ShoppingCart getShoppingCart() {
+//        return shoppingCart;
+//    }
+
+//    public void setShoppingCart(ShoppingCart shoppingCart) {
+//        this.shoppingCart = shoppingCart;
+//    }
+
     public Long getId() {
         return id;
     }

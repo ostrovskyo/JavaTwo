@@ -10,9 +10,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class TotalPriceCalculationTest {
+public class AmountCalculationTest {
 
-    private TotalPriceCalculation victim = new TotalPriceCalculation();
+    private AmountCalculation victim = new AmountCalculation();
     private List<Product> productList = new ArrayList<>();
 
     @Test
