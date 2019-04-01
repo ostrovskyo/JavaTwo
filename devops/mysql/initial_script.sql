@@ -26,14 +26,17 @@ CREATE TABLE IF NOT EXISTS shopping_carts
   ENGINE = InnoDB
   AUTO_INCREMENT = 0;
 
-CREATE TABLE IF NOT EXISTS products_shopping_carts
+CREATE TABLE products_shopping_carts
 (
-  id               BIGINT NOT NULL AUTO_INCREMENT,
-  product_id       BIGINT NOT NULL,
-  shopping_cart_id BIGINT NOT NULL,
-  created          TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (id)
+  id               bigint(20) NOT NULL AUTO_INCREMENT,
+  product_id       bigint(20) NOT NULL,
+  shopping_cart_id bigint(20) NOT NULL,
+  created          timestamp  NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  KEY fk_products_shopping_carts_product_id (product_id),
+  KEY fk_products_shopping_carts_shopping_cart_id (shopping_cart_id),
+  CONSTRAINT fk_products_shopping_carts_product_id FOREIGN KEY (product_id) REFERENCES products (id),
+  CONSTRAINT fk_products_shopping_carts_shopping_cart_id FOREIGN KEY (shopping_cart_id) REFERENCES shopping_carts (id)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 0;
-
