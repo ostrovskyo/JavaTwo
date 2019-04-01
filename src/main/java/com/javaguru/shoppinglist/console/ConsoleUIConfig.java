@@ -31,7 +31,7 @@ public class ConsoleUIConfig {
     }
 
     @Bean
-    ConsoleUI ConsoleUI(){
+    ConsoleUI ConsoleUI() {
         List<Action> actions = new ArrayList<>();
         actions.add(createProductAction);
         actions.add(createShoppingCartAction);
