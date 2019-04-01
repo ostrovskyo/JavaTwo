@@ -1,31 +1,15 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+public interface ShoppingCartRepository {
 
-@Component
-public class ShoppingCartRepository {
+//    void insertShoppingCart(Long id, ShoppingCart shoppingCart);
+    Long insertShoppingCart(ShoppingCart shoppingCart);
 
-    private static final Map<Long, ShoppingCart> database = new HashMap<>();
+    void printAllShoppingCarts();
 
-    public void insertShoppingCart(Long id, ShoppingCart shoppingCart) {
-        database.put(id, shoppingCart);
-    }
+    ShoppingCart getShoppingCartById(Long id);
 
-    public void printAllShoppingCarts() {
-        for (ShoppingCart element : database.values()) {
-            System.out.println(element);
-        }
-    }
-
-    public ShoppingCart getShoppingCartById(Long id) {
-        return database.get(id);
-    }
-
-    public void deleteShoppingCartById(Long id) {
-        database.remove(id);
-    }
+    void deleteShoppingCartById(Long id);
 }

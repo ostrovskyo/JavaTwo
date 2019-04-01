@@ -20,17 +20,19 @@ public class ShoppingCart {
     private String name;
 
     @Column(name = "amount", columnDefinition = "float")
-    private BigDecimal amount = new BigDecimal(0);
+    private BigDecimal amount;
 
-//    @OneToMany(mappedBy = "shoppingCart")
-    @OneToMany
-    @JoinColumn(name = "products_shopping_carts")
-    private List<Product> productList;
 
-    public void calculateTotalPrice() {
-        AmountCalculation amountCalculation = new AmountCalculation();
-        amount = amountCalculation.getTotalPrice(productList);
-    }
+//    private BigDecimal amount = new BigDecimal(0);
+
+//    @OneToMany
+//    @JoinColumn(name = "products_shopping_carts")
+//    private List<Product> productList;
+
+//    public void calculateTotalPrice() {
+//        AmountCalculation amountCalculation = new AmountCalculation();
+//        amount = amountCalculation.getTotalPrice(productList);
+//    }
 
     public Long getId() {
         return id;
@@ -40,13 +42,13 @@ public class ShoppingCart {
         this.id = id;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
+//    public List<Product> getProductList() {
+//        return productList;
+//    }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
+//    public void setProductList(List<Product> productList) {
+//        this.productList = productList;
+//    }
 
     public String getName() {
         return name;
@@ -63,13 +65,12 @@ public class ShoppingCart {
         ShoppingCart that = (ShoppingCart) o;
         return Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(amount, that.amount) &&
-                Objects.equals(productList, that.productList);
+                Objects.equals(amount, that.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, amount, productList);
+        return Objects.hash(id, name, amount);
     }
 
     @Override
@@ -78,7 +79,6 @@ public class ShoppingCart {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", amount=" + amount +
-                ", productList=" + productList +
                 '}';
     }
 }
