@@ -50,8 +50,9 @@ public class CreateShoppingCartAction implements Action {
                 case "1":
                     ShoppingCart shoppingCart = new ShoppingCart();
                     shoppingCart.setName(name);
-                    shoppingCart.setProductList(productList);
-                    shoppingCart.calculateTotalPrice();
+//                    shoppingCart.setProductList(productList);
+//                    shoppingCart.calculateTotalPrice();
+//                    shoppingCart.setAmount(shoppingCart.calculateTotalPrice(productList));
 
                     try {
                         Long response = productService.createShoppingCart(shoppingCart);

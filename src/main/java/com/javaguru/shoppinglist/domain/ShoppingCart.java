@@ -1,10 +1,6 @@
 package com.javaguru.shoppinglist.domain;
 
-import com.javaguru.shoppinglist.service.AmountCalculation;
-
 import javax.persistence.*;
-import java.math.BigDecimal;
-import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -19,8 +15,9 @@ public class ShoppingCart {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "amount", columnDefinition = "float")
-    private BigDecimal amount;
+//    @Column(name = "amount", columnDefinition = "float")
+//    private BigDecimal amount;
+
 
 
 //    private BigDecimal amount = new BigDecimal(0);
@@ -30,6 +27,11 @@ public class ShoppingCart {
 //    private List<Product> productList;
 
 //    public void calculateTotalPrice() {
+//        AmountCalculation amountCalculation = new AmountCalculation();
+//        amount = amountCalculation.getTotalPrice(productList);
+//    }
+
+//        public void calculateTotalPrice() {
 //        AmountCalculation amountCalculation = new AmountCalculation();
 //        amount = amountCalculation.getTotalPrice(productList);
 //    }
@@ -58,19 +60,19 @@ public class ShoppingCart {
         this.name = name;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShoppingCart that = (ShoppingCart) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(amount, that.amount);
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, amount);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -78,7 +80,6 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", amount=" + amount +
                 '}';
     }
 }

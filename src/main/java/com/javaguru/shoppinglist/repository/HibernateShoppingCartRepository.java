@@ -7,9 +7,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Repository
 @Profile("hibernate")
 @Transactional
@@ -22,13 +19,7 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    private static final Map<Long, ShoppingCart> database = new HashMap<>();
-
-//    @Override
-//    public Long insertShoppingCart(ShoppingCart shoppingCart) {
-//        sessionFactory.getCurrentSession().save(shoppingCart);
-//        return shoppingCart.getId();
-//    }
+//    private static final Map<Long, ShoppingCart> database = new HashMap<>();
 
     @Override
     public Long insertShoppingCart(ShoppingCart shoppingCart) {

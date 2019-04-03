@@ -15,11 +15,11 @@ public class DefaultProductService implements ProductService {
 //    private final ProductRepository database;
     private final ProductRepository database;
     private final ProductValidationService productValidationService;
-    private final ShoppingCartInMemoryRepository shoppingCartDatabase;
+    private final ShoppingCartRepository shoppingCartDatabase;
 //    private final HibernateShoppingCartRepository shoppingCartDatabase;
 
     @Autowired
-    public DefaultProductService(ProductRepository database, ShoppingCartInMemoryRepository shoppingCartDatabase, ProductValidationService productValidationService) {
+    public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
         this.database = database;
         this.shoppingCartDatabase = shoppingCartDatabase;
         this.productValidationService = productValidationService;
@@ -51,7 +51,8 @@ public class DefaultProductService implements ProductService {
         }
 
         shoppingCart.setId(shoppingCartIdSequence);
-        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
+//        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
+        shoppingCartDatabase.insertShoppingCart(shoppingCart);
         return shoppingCartIdSequence++;
     }
 
