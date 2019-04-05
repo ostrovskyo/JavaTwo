@@ -1,7 +1,9 @@
 package com.javaguru.shoppinglist.repository;
 
+import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
@@ -34,7 +36,10 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
 
     @Override
     public ShoppingCart getShoppingCartById(Long id) {
-        return null;
+        ShoppingCart shoppingCart = (ShoppingCart) sessionFactory.getCurrentSession().createCriteria(ShoppingCart.class)
+                .add(Restrictions.eq("id", id))
+                .uniqueResult();
+        return shoppingCart;
     }
 
     @Override

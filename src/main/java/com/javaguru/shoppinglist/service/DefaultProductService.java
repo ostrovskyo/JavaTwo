@@ -53,7 +53,8 @@ public class DefaultProductService implements ProductService {
         shoppingCart.setId(shoppingCartIdSequence);
 //        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
         shoppingCartDatabase.insertShoppingCart(shoppingCart);
-        return shoppingCartIdSequence++;
+//        return shoppingCartIdSequence++;
+        return shoppingCart.getId();
     }
 
     @Override

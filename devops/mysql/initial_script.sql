@@ -20,7 +20,6 @@ CREATE TABLE IF NOT EXISTS shopping_carts
 (
   id     BIGINT      NOT NULL AUTO_INCREMENT,
   name   VARCHAR(50) NOT NULL,
-  amount FLOAT,
   PRIMARY KEY (id)
 )
   ENGINE = InnoDB

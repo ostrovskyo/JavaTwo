@@ -25,9 +25,9 @@ public class ShoppingCartProductService {
         this.productShoppingCartRepository = productShoppingCartRepository;
     }
 
-    public Long addProductToShoppingCart(Long productId, Long shoppingCartId) {
-        Product product = productService.findById(productId);
+    public Long addProductToShoppingCart(Long shoppingCartId, Long productId) {
         ShoppingCart shoppingCart = shoppingCartService.findById(shoppingCartId);
+        Product product = productService.findById(productId);
 
         ProductShoppingCart productShoppingCart = new ProductShoppingCart();
         productShoppingCart.setProduct(product);
