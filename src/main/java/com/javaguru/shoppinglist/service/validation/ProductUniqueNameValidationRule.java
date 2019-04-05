@@ -1,7 +1,6 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
-import com.javaguru.shoppinglist.repository.JdbcProductRepository;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -11,8 +10,6 @@ import java.util.Optional;
 @Component
 public class ProductUniqueNameValidationRule implements ProductValidationRule{
 
-//    private final ProductInMemoryRepository database;
-//    private final JdbcProductRepository database;
     private final ProductRepository database;
 
     @Autowired
