@@ -15,27 +15,6 @@ public class ShoppingCart {
     @Column(name = "name")
     private String name;
 
-//    @Column(name = "amount", columnDefinition = "float")
-//    private BigDecimal amount;
-
-
-
-//    private BigDecimal amount = new BigDecimal(0);
-
-//    @OneToMany
-//    @JoinColumn(name = "products_shopping_carts")
-//    private List<Product> productList;
-
-//    public void calculateTotalPrice() {
-//        AmountCalculation amountCalculation = new AmountCalculation();
-//        amount = amountCalculation.getTotalPrice(productList);
-//    }
-
-//        public void calculateTotalPrice() {
-//        AmountCalculation amountCalculation = new AmountCalculation();
-//        amount = amountCalculation.getTotalPrice(productList);
-//    }
-
     public Long getId() {
         return id;
     }
@@ -43,14 +22,6 @@ public class ShoppingCart {
     public void setId(Long id) {
         this.id = id;
     }
-
-//    public List<Product> getProductList() {
-//        return productList;
-//    }
-
-//    public void setProductList(List<Product> productList) {
-//        this.productList = productList;
-//    }
 
     public String getName() {
         return name;

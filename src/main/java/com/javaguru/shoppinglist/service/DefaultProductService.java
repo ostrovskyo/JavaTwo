@@ -10,13 +10,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultProductService implements ProductService {
 
-    private Long shoppingCartIdSequence = 0L;
-
-//    private final ProductRepository database;
     private final ProductRepository database;
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;
-//    private final HibernateShoppingCartRepository shoppingCartDatabase;
 
     @Autowired
     public DefaultProductService(ProductRepository database, ShoppingCartRepository shoppingCartDatabase, ProductValidationService productValidationService) {
@@ -50,10 +46,7 @@ public class DefaultProductService implements ProductService {
             throw new IllegalArgumentException("Error: Shopping Cart must be not null!");
         }
 
-        shoppingCart.setId(shoppingCartIdSequence);
-//        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
         shoppingCartDatabase.insertShoppingCart(shoppingCart);
-//        return shoppingCartIdSequence++;
         return shoppingCart.getId();
     }
 

@@ -4,7 +4,6 @@ import com.javaguru.shoppinglist.domain.ShoppingCart;
 
 public interface ShoppingCartRepository {
 
-//    Long insertShoppingCart(Long id, ShoppingCart shoppingCart);
     Long insertShoppingCart(ShoppingCart shoppingCart);
 
     void printAllShoppingCarts();

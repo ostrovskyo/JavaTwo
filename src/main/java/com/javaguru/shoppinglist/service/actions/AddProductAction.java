@@ -27,4 +27,9 @@ public class AddProductAction implements Action {
         Long response = shoppingCartProductService.addProductToShoppingCart(userId, taskId);
         System.out.println("Response: " + response);
     }
+
+    @Override
+    public String toString() {
+        return ACTION_NAME;
+    }
 }

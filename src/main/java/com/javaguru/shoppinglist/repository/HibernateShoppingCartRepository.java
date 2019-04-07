@@ -1,13 +1,16 @@
 package com.javaguru.shoppinglist.repository;
 
-import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 @Profile("hibernate")
@@ -21,8 +24,6 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
         this.sessionFactory = sessionFactory;
     }
 
-//    private static final Map<Long, ShoppingCart> database = new HashMap<>();
-
     @Override
     public Long insertShoppingCart(ShoppingCart shoppingCart) {
         sessionFactory.getCurrentSession().save(shoppingCart);
@@ -31,7 +32,12 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
 
     @Override
     public void printAllShoppingCarts() {
+        Query query = sessionFactory.getCurrentSession().createQuery("from ShoppingCart");
+        List<ShoppingCart> list = query.list();
 
+        for (ShoppingCart element : list) {
+            System.out.println(element);
+        }
     }
 
     @Override
@@ -44,24 +50,10 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
 
     @Override
     public void deleteShoppingCartById(Long id) {
+        Session session = sessionFactory.getCurrentSession();
+        ShoppingCart shoppingCart = (ShoppingCart) session.load(ShoppingCart.class, id);
+        session.delete(shoppingCart);
 
+        session.flush();
     }
-//
-//    public void insertShoppingCart(Long id, ShoppingCart shoppingCart) {
-//        database.put(id, shoppingCart);
-//    }
-//
-//    public void printAllShoppingCarts() {
-//        for (ShoppingCart element : database.values()) {
-//            System.out.println(element);
-//        }
-//    }
-//
-//    public ShoppingCart getShoppingCartById(Long id) {
-//        return database.get(id);
-//    }
-//
-//    public void deleteShoppingCartById(Long id) {
-//        database.remove(id);
-//    }
 }

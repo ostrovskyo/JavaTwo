@@ -18,6 +18,5 @@ public class DefaultShoppingCartService implements ShoppingCartService {
     @Override
     public ShoppingCart findById(Long shoppingCartId) {
         return shoppingCartRepository.getShoppingCartById(shoppingCartId);
-//                .orElseThrow(() -> new NoSuchElementException("User not found, id: " + shoppingCartId));
     }
 }

@@ -1,6 +1,5 @@
 package com.javaguru.shoppinglist.service.actions;
 
-import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.service.ProductService;
@@ -8,8 +7,6 @@ import com.javaguru.shoppinglist.service.ShoppingCartProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 @Component
@@ -34,7 +31,6 @@ public class CreateShoppingCartAction implements Action {
     public void execute() {
         String choice = "null";
         Scanner scanner = new Scanner(System.in);
-        List<Product> productList = new ArrayList<>();
 
         System.out.println("Enter Shopping Cart name:");
         String name = scanner.nextLine();
@@ -60,25 +56,10 @@ public class CreateShoppingCartAction implements Action {
                     System.out.println("Chose product \"id\" to add: ");
 
                     Long productId = Long.valueOf(scanner.nextLine());
-
-                    shoppingCartProductService.addProductToShoppingCart(productId, shoppingCart.getId());
-//                    productList.add(database.getProductById(Long.valueOf(choice)));
-
+                    shoppingCartProductService.addProductToShoppingCart(shoppingCart.getId(), productId);
 
                     break;
                 case "1":
-//                    ShoppingCart shoppingCart = new ShoppingCart();
-//                    shoppingCart.setName(name);
-//                    shoppingCart.setProductList(productList);
-//                    shoppingCart.calculateTotalPrice();
-//                    shoppingCart.setAmount(shoppingCart.calculateTotalPrice(productList));
-
-//                    try {
-//                        Long response = productService.createShoppingCart(shoppingCart);
-//                        System.out.println("Response: " + response);
-//                    } catch (Exception e) {
-//                        System.out.println(e.getMessage());
-//                    }
                     return;
             }
         }
