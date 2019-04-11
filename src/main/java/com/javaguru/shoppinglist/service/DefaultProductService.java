@@ -2,10 +2,7 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import com.javaguru.shoppinglist.repository.HibernateProductRepository;
-import com.javaguru.shoppinglist.repository.JdbcProductRepository;
-import com.javaguru.shoppinglist.repository.ProductRepository;
-import com.javaguru.shoppinglist.repository.ShoppingCartRepository;
+import com.javaguru.shoppinglist.repository.*;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,10 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class DefaultProductService implements ProductService {
 
-    private Long shoppingCartIdSequence = 0L;
-
-    //    private final JdbcProductRepository database;
-//    private final HibernateProductRepository database;
     private final ProductRepository database;
     private final ProductValidationService productValidationService;
     private final ShoppingCartRepository shoppingCartDatabase;
@@ -53,9 +46,8 @@ public class DefaultProductService implements ProductService {
             throw new IllegalArgumentException("Error: Shopping Cart must be not null!");
         }
 
-        shoppingCart.setId(shoppingCartIdSequence);
-        shoppingCartDatabase.insertShoppingCart(shoppingCartIdSequence, shoppingCart);
-        return shoppingCartIdSequence++;
+        shoppingCartDatabase.insertShoppingCart(shoppingCart);
+        return shoppingCart.getId();
     }
 
     @Override

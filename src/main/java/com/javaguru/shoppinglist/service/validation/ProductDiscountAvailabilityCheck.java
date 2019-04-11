@@ -19,6 +19,6 @@ public class ProductDiscountAvailabilityCheck implements ProductValidationRule {
     }
 
     private boolean isPriceBehindDiscountMargin(BigDecimal price) {
-       return price.compareTo(BigDecimal.valueOf(DISCOUNT_MARGIN)) < 0 && price.compareTo(BigDecimal.ZERO) != 0;
+        return price.compareTo(BigDecimal.valueOf(DISCOUNT_MARGIN)) < 0 && price.compareTo(BigDecimal.ZERO) != 0;
     }
 }

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Component
-public class TotalPriceCalculation {
+public class AmountCalculation {
 
     public BigDecimal getTotalPrice(List<Product> productList) {
         BigDecimal totalPrice = new BigDecimal(0);

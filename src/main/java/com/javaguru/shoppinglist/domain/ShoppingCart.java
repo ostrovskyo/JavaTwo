@@ -1,23 +1,19 @@
 package com.javaguru.shoppinglist.domain;
 
-import com.javaguru.shoppinglist.service.TotalPriceCalculation;
-
-import java.math.BigDecimal;
-import java.util.List;
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "shopping_carts")
 public class ShoppingCart {
 
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "name")
     private String name;
-    private List<Product> productList;
-
-    private TotalPriceCalculation totalPriceCalculation = new TotalPriceCalculation();
-    private BigDecimal totalPrice = new BigDecimal(0);
-
-    public void calculateTotalPrice() {
-        totalPrice = totalPriceCalculation.getTotalPrice(productList);
-    }
 
     public Long getId() {
         return id;
@@ -25,14 +21,6 @@ public class ShoppingCart {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
     }
 
     public String getName() {
@@ -43,21 +31,19 @@ public class ShoppingCart {
         this.name = name;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ShoppingCart that = (ShoppingCart) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(name, that.name) &&
-                Objects.equals(productList, that.productList) &&
-                Objects.equals(totalPriceCalculation, that.totalPriceCalculation) &&
-                Objects.equals(totalPrice, that.totalPrice);
+                Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, productList, totalPriceCalculation, totalPrice);
+        return Objects.hash(id, name);
     }
 
     @Override
@@ -65,8 +51,6 @@ public class ShoppingCart {
         return "ShoppingCart{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", totalPrice=" + totalPrice +
-                ", productList=" + productList +
                 '}';
     }
 }
