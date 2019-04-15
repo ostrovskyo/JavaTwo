@@ -2,6 +2,7 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.dto.ProductDto;
 import com.javaguru.shoppinglist.repository.*;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,13 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public Long create(Product product) {
+    public Long create(ProductDto productDto) {
         if (product == null) {
             throw new IllegalArgumentException("Error: Product must be not null!");
         }
 
         productValidationService.validate(product);
+
         Long createdProduct = database.insertProduct(product);
         return createdProduct;
     }

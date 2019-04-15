@@ -1,6 +1,7 @@
 package com.javaguru.shoppinglist.service.validation;
 
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,11 +17,11 @@ public class ProductValidationService {
         this.validationRuleSet = validationRuleSet;
     }
 
-    public void validate(Product product) {
-        if (product == null) {
+    public void validate(ProductDto productDto) {
+        if (productDto == null) {
             throw new ProductValidationException("Product must be not null");
         }
-        validationRuleSet.forEach(s -> s.validate(product));
+        validationRuleSet.forEach(s -> s.validate(productDto));
     }
 }
 
