@@ -6,7 +6,6 @@ import com.javaguru.shoppinglist.dto.ProductDto;
 
 public interface ProductService {
 
-//    Long create(Product product);
     Long create(ProductDto productDto);
 
     Product findById(Long id);
@@ -16,6 +15,8 @@ public interface ProductService {
     ShoppingCart findShoppingCartById(Long id);
 
     void printAllShoppingCarts();
+
+    void printAllProducts();
 
     void deleteShoppingCartById(Long id);
 }

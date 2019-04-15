@@ -52,7 +52,7 @@ public class CreateShoppingCartAction implements Action {
             switch (choice) {
                 case "0":
                     System.out.println("All product list: ");
-                    database.showAllProducts();
+                    database.printAllProducts();
                     System.out.println("Chose product \"id\" to add: ");
 
                     Long productId = Long.valueOf(scanner.nextLine());

@@ -2,6 +2,8 @@ package com.javaguru.shoppinglist.service.actions;
 
 import com.javaguru.shoppinglist.domain.Category;
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDto;
+import com.javaguru.shoppinglist.mapper.ProductConverter;
 import com.javaguru.shoppinglist.service.ActualPriceCalculation;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,12 @@ public class CreateProductAction implements Action {
     private static final String ACTION_NAME = "Create Product";
 
     private final ProductService productService;
+    private final ProductConverter productConverter;
 
     @Autowired
-    public CreateProductAction(ProductService productService) {
+    public CreateProductAction(ProductService productService, ProductConverter productConverter) {
         this.productService = productService;
+        this.productConverter = productConverter;
     }
 
     @Override
@@ -59,8 +63,10 @@ public class CreateProductAction implements Action {
         product.setDescription(description);
         product.setCategory(category);
 
+        ProductDto productDto = productConverter.convert(product);
+
         try {
-            Long response = productService.create(product);
+            Long response = productService.create(productDto);
             System.out.println("Response: " + response);
         } catch (Exception e) {
             System.out.println(e.getMessage());

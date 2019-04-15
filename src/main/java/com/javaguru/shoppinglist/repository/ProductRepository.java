@@ -12,5 +12,5 @@ public interface ProductRepository {
 
     Optional<Product> getProductByName(String name);
 
-    void showAllProducts();
+    void printAllProducts();
 }
