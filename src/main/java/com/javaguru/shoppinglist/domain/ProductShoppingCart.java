@@ -1,5 +1,8 @@
 package com.javaguru.shoppinglist.domain;
 
+import org.hibernate.annotations.Cascade;
+import org.springframework.context.annotation.Lazy;
+
 import javax.persistence.*;
 import java.util.Objects;
 

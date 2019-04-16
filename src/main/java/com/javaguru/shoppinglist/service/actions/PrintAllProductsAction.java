@@ -3,7 +3,7 @@ package com.javaguru.shoppinglist.service.actions;
 import com.javaguru.shoppinglist.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class PrintAllProductsAction implements Action{
+public class PrintAllProductsAction implements Action {
 
     private static final String ACTION_NAME = "Print all Products";
 

@@ -9,6 +9,9 @@ import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Component
 public class DefaultProductService implements ProductService {
 
@@ -66,19 +69,9 @@ public class DefaultProductService implements ProductService {
     }
 
     @Override
-    public void printAllProducts() {
-        database.printAllProducts();
+    public List<ProductDto> printAllProducts() {
+        return database.getAllProducts().stream()
+                .map(productConverter::convert)
+                .collect(Collectors.toList());
     }
-
-    @Override
-    public void printAllShoppingCarts() {
-        shoppingCartDatabase.printAllShoppingCarts();
-    }
-
-    @Override
-    public void deleteShoppingCartById(Long id) {
-        shoppingCartDatabase.deleteShoppingCartById(id);
-    }
-
-
 }
