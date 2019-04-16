@@ -16,7 +16,7 @@ public class PrintAllProductsAction implements Action{
 
     @Override
     public void execute() {
-        productService.printAllShoppingCarts();
+        productService.printAllProducts();
     }
 
     @Override

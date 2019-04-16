@@ -47,6 +47,11 @@ public class ProductController {
         return productDto;
     }
 
+    @GetMapping("/")
+    public void printAllProducts() {
+        productService.printAllProducts();
+    }
+
 //    @GetMapping(params = "name")
 //    public ProductDto findProductByName(@RequestParam("name") String name) {
 //        return productService.findTaskByName(name);
