@@ -2,11 +2,13 @@ package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.ShoppingCart;
 
+import java.util.List;
+
 public interface ShoppingCartRepository {
 
     Long insertShoppingCart(ShoppingCart shoppingCart);
 
-    void printAllShoppingCarts();
+    List<ShoppingCart> getAllShoppingCarts();
 
     ShoppingCart getShoppingCartById(Long id);
 

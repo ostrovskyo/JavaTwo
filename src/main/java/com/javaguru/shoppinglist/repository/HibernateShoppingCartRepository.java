@@ -1,7 +1,6 @@
 package com.javaguru.shoppinglist.repository;
 
 import com.javaguru.shoppinglist.domain.ShoppingCart;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -31,13 +30,9 @@ public class HibernateShoppingCartRepository implements ShoppingCartRepository {
     }
 
     @Override
-    public void printAllShoppingCarts() {
-        Query query = sessionFactory.getCurrentSession().createQuery("from ShoppingCart");
-        List<ShoppingCart> list = query.list();
+    public List<ShoppingCart> getAllShoppingCarts() {
+        return sessionFactory.getCurrentSession().createCriteria(ShoppingCart.class).list();
 
-        for (ShoppingCart element : list) {
-            System.out.println(element);
-        }
     }
 
     @Override

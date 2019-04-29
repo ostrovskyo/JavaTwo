@@ -2,10 +2,13 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Product;
 import com.javaguru.shoppinglist.domain.ShoppingCart;
+import com.javaguru.shoppinglist.dto.ProductDto;
+
+import java.util.List;
 
 public interface ProductService {
 
-    Long create(Product product);
+    Long create(ProductDto productDto);
 
     Product findById(Long id);
 
@@ -13,7 +16,6 @@ public interface ProductService {
 
     ShoppingCart findShoppingCartById(Long id);
 
-    void printAllShoppingCarts();
+    List<ProductDto> printAllProducts();
 
-    void deleteShoppingCartById(Long id);
 }

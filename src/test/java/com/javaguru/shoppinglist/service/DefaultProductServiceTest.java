@@ -2,6 +2,8 @@ package com.javaguru.shoppinglist.service;
 
 import com.javaguru.shoppinglist.domain.Category;
 import com.javaguru.shoppinglist.domain.Product;
+import com.javaguru.shoppinglist.dto.ProductDto;
+import com.javaguru.shoppinglist.mapper.ProductConverter;
 import com.javaguru.shoppinglist.repository.ProductRepository;
 import com.javaguru.shoppinglist.service.validation.ProductValidationService;
 import org.junit.Test;
@@ -27,6 +29,9 @@ public class DefaultProductServiceTest {
     @Mock
     private ProductValidationService productValidationService;
 
+    @Mock
+    private ProductConverter productConverter;
+
     @InjectMocks
     private DefaultProductService victim;
 
@@ -38,7 +43,9 @@ public class DefaultProductServiceTest {
         Product product = product();
         when(productInMemoryRepository.insertProduct(product)).thenReturn(product.getId());
 
-        Long result = victim.create(product);
+        ProductDto productDto = productConverter.convert(product);
+
+        Long result = victim.create(productDto);
 
         verify(productValidationService).validate(productArgumentCaptor.capture());
         Product captorResult = productArgumentCaptor.getValue();

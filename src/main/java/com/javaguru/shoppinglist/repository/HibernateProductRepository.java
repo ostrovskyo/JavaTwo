@@ -48,11 +48,7 @@ public class HibernateProductRepository implements ProductRepository {
     }
 
     @Override
-    public void showAllProducts() {
-        List<Product> products = sessionFactory.getCurrentSession().createCriteria(Product.class).list();
-
-        for (Product element : products) {
-            System.out.println(element);
-        }
+    public List<Product> getAllProducts() {
+        return sessionFactory.getCurrentSession().createCriteria(Product.class).list();
     }
 }
